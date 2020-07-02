@@ -1,24 +1,26 @@
-# README
+# PhotoCamper
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## サイト概要
+campで撮った写真・自身のギアの紹介・キャンプ場の紹介・料理のレシピを投稿するサイトです！
 
-Things you may want to cover:
+### サイトテーマ
+campの良さを共有・紹介して行こう！！
 
-* Ruby version
+### テーマを選んだ理由
+camp好きな人たちが写真や料理のレシピを共有する事でcampの良さを再認識していけるサイトを作りたいと考えたから！
 
-* System dependencies
+### ターゲットユーザ
+全国のcamper
 
-* Configuration
+### 主な利用シーン
+・campギアの投稿・閲覧<br>
+・camp飯の投稿・閲覧<br>
+・camp場の投稿・閲覧
 
-* Database creation
+## 設計書
 
-* Database initialization
+### 機能一覧
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### チャレンジ要素一覧
+https://docs.google.com/spreadsheets/d/1XXrpSqxoSJAyipq47H5eElwcqGC0SKizgi2HHO7tx5I/edit?usp=sharing
+ 
