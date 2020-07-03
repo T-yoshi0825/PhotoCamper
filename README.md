@@ -20,9 +20,5 @@ campが好きなので、campが好きな人たちと写真や料理のレシピ
 ## 設計書
 
 ### 機能一覧
-・campギアの投稿・閲覧・コメント<br>
-・camp飯の投稿・閲覧<br>
-・camp場の投稿・閲覧・コメント
-### チャレンジ要素一覧
 https://docs.google.com/spreadsheets/d/1XXrpSqxoSJAyipq47H5eElwcqGC0SKizgi2HHO7tx5I/edit?usp=sharing
  
