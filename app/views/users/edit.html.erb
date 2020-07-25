@@ -17,7 +17,7 @@
             <%= f.text_field :last_name_kana, autofocus: true, autocomplete:"family-name" , class: "form_input_s"%>
             <%= f.text_field :first_name_kana, autofocus: true, autocomplete:"given-name", class: "form_input_s"%>
           </div>
-          
+
           <div class="field">
             <%= f.label :email, "メールアドレス", class: "form_label" %><br />
             <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form_input" %>
@@ -28,6 +28,4 @@
             <%= f.submit "編集", class: "form_submit white_txt bold" %>
           </div>
           <% end %>
-          <div class="text-center">
-          
-          </div>
+      

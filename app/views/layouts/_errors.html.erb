@@ -1,0 +1,7 @@
+<%= form_for(image) do |f| %>
+  <% if image.errors.any? %>
+    <%= image.errors.count %>件のエラーが発生しました
+    <% image.errors.full_messages.each do |message| %>
+      <%= message %>
+    <% end %>
+  <% end %>

@@ -1,0 +1,18 @@
+<div class="row">
+	<div class="col-sm-9">
+	  <h2 class="new_post"> 新規投稿</h2>
+		<%= form_for(@image) do |f| %>
+			<div class="post-image"> 
+		     <%= attachment_image_tag @image, :image, :fill, 100, 100, class: "image-thumbnail", fallback: "noimage.png" %>
+		    </div>
+		    <div class="image_field">
+		    	<%= f.attachment_field :image, placeholder: "投稿画像", class: "edit_form" %>
+		    </div>
+		    <div class="caption-field">
+		    	<h3 class="caption">投稿説明</h3>
+		    	<%= f.text_field :caption, autofocus: true, class: "form-control" %>
+		    </div>
+		    <%= f.submit "投稿する", class: "btn btn-lg btn-block" %>
+	    <% end %>
+    </div>
+</div>
