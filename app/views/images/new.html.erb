@@ -1,0 +1,37 @@
+<div class="row">
+	<div class="text-center">
+		<h2 class="new_post"> 新規投稿</h2>
+			<%= form_for(@image) do |f| %>
+				<div class="image-text">
+					<div class="text-left">
+						<h2>投稿写真選択</h2>
+					</div>
+				</div>
+				<div class="image_field">
+			    	<%= f.attachment_field :image, placeholder: "投稿画像", class: "edit_form" %>
+			    </div>
+
+				<div class="post-map-address">
+					<div class="text-center">
+						<h3>キャンプ場名</h3>
+					</div>
+					<%=f.text_field :address, placeholder: "キャンプ場名" %>
+				</div>
+
+			    <div class="caption-field">
+		    		<div class="text-left">
+		    			<h3>投稿説明</h3>
+		    		</div>
+		    		<%= f.text_field :caption, autofocus: true, class: "form-control" %>
+			    </div>
+			    <br>
+			    <div class=“category_field”>
+				<%= f.label :category_id, "カテゴリー" %>
+				<%= f.collection_select :category_id, @categories, :id, :name, include_blank: "選択してください", class: "form_input" %>
+		        </div>
+		        <br>
+			    <%= f.submit "投稿する", class: "btn btn-success btn-block" %>
+		    <% end %>		    	
+	</div>
+</div>
+				

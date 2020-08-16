@@ -1,0 +1,15 @@
+<div class="row">
+    <h2 class="midashi">登録詳細</h2>
+    	<div class="image">
+            <%= attachment_image_tag(@user,:profile_image, :fill, 100, 100, class:"image-circle", fallback: "no_image.jpg") %>
+    	</div>
+        <br>
+        <div class="acount_name">
+        	<%= @user.name %>
+        </div>
+        <br>
+        <div class="email">
+        	<%= @user.email %>
+        </div>
+</div>
+

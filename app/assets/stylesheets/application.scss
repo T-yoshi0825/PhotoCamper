@@ -1,0 +1,141 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+@import "bootstrap-sprockets"; 
+@import "bootstrap"; 
+
+header {
+	width:100%;
+	height:80px;
+	padding:8px 0;
+}
+
+.header-text {
+	color:#000;
+}
+
+.signup-content {
+	width:100%;
+	height:auto;
+}
+
+.signup-title {
+	text-align:center;
+}
+
+.login-title {
+	text-align:center;
+}
+
+.field {
+	text-align:center;
+}
+
+.passwords-edit {
+	text-align:center;
+}
+
+.OmniAuth-content {
+	text-align:center;
+}
+
+.actions {
+	text-align:center;
+}
+
+/*-----top-----*/
+.main-visual {
+	width:100%;
+	height:600px;
+	background-image:url(AdobeStock1.jpg);
+	background-size:cover;
+}
+
+.main-visual-content {
+	width:40%;
+	height:600px;
+	background-color:rgba(0,0,0,0.5);
+	text-align:center;
+	padding-top:280px;
+	color:#fff;
+}
+/*-----about-----*/
+.about-content {
+	width:100%;
+	height:auto;
+}
+
+.about-title {
+	width:100%;
+	height:300px;
+	background-color:#EEEEEE;
+	text-align:center;
+	padding-top:105px;
+	color:#000;
+}
+
+.site-title {
+	text-align:center;
+}
+
+.caption-title-1 {
+	width:100%;
+	height:400px;
+	background-image:url(AdobeStock2.jpg);
+	background-position:center;
+	background-size:cover;
+	text-align:center;
+	padding-top:170px;
+	color:#fff;
+}
+
+.caption-title-2 {
+	width:100%;
+	height:400px;
+	background-image:url(AdobeStock3.jpg);
+	background-position:center;
+	background-size:cover;
+	text-align:center;
+	padding-top:170px;
+	color:#fff;
+}
+/*-----image-----*/
+.post-image-content {
+	width:100%;
+	margin:0 auto;
+}
+
+.post-image-content:after {
+	content:'';
+	display:block;
+	clear:both;
+}
+
+.float-content {
+	float:left;
+}
+
+footer {
+	width:100%;
+	height:80px;
+	text-align:center;
+	padding:30px 0;
+	background-color:#848282;
+	margin-top:20px;
+}
+
+.footer-text {
+	color:#000;
+}
