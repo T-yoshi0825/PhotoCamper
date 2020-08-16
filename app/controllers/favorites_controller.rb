@@ -4,14 +4,14 @@ class FavoritesController < ApplicationController
 		image = Image.find(params[:image_id])
 		favorite = current_user.favorites.new(image_id: image.id)
 		favorite.save
-		redirect_to image_path(image)
+		redirect_to request.referer
 	end
 
 	def destroy
 		image = Image.find(params[:image_id])
 		favorite = current_user.favorites.find_by(image_id: image.id)
 		favorite.destroy
-		redirect_to image_path(image)
+		redirect_to request.referer
 	end
-
+    
 end

@@ -1,0 +1,19 @@
+<div class="row">
+	<div class="midashi">投稿編集</div>
+		<div class="post-image">
+			<%= form_for(@image) do |f| %>
+			<div class="edit_image">
+				<%= attachment_image_tag @image, :image, :fill, 100, 100, class: "image-thumbnail", fallback: "noimage.png" %>
+		  </div>
+      <%= f.attachment_field :image, placeholder: "投稿画像", class: "edit_form" %>
+    </div>
+      <div class="field">
+        <%= f.label :caption, "投稿説明", class: "form_label" %><br />
+        <%= f.text_field :caption, class: "form_input" %>
+      </div>
+
+      <div class="actions">
+        <%= f.submit "編集を保存する", class: "btn btn-lg btn-block" %>
+      </div>
+      <% end %>
+</div>

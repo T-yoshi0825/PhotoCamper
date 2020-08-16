@@ -1,12 +1,21 @@
-<div class="row">
-    <div class="col-sm-3">
+<div class="contaimer">
+    <div class="row">
+        <div class="col-sm-2">
             <div class="sidebar">
                 <%= link_to new_image_path do %>
-                  <h2 class="campers_txt">新規投稿</h2>
+                  <h2 class="new_post">新規投稿</h2>
                 <% end %>
-                <h2 class="category_txt">ジャンル検索</h2>
-                <ul class="center">
-
-                </ul>
+                <h2 class="category_seach">ジャンル検索</h2>
+                    <ul class="center">
+        　　　　　　　　　　<% categories.each do |category| %>
+                            <% if category.active_status == true %>
+                                <li><%= link_to admins_category_path(category), class: "white_txt" do %>
+                                     <%= category.name %>
+                                </li>
+                                    <% end %>
+                            <% end %>
+                        <% end %>
+                    </ul>
             </div>
-    </div>
+        </div>
+ 

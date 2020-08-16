@@ -2,8 +2,9 @@ class ImagesController < ApplicationController
 
 	def new
         @image = Image.new
+        @categories = Category.where(active_status: :true)
     end
-    
+
     def create
 		@image = Image.new(image_params)
 		@image.user_id = current_user.id
@@ -11,12 +12,13 @@ class ImagesController < ApplicationController
 		redirect_to images_path
 	end
 
-	def index
+	def index	
 		@images = Image.all
 	end
 
 	def show
 		@image = Image.find(params[:id])
+		@images = Image.all
 		@comment = Comment.new
 	end
 
@@ -38,6 +40,6 @@ class ImagesController < ApplicationController
 
 	private
 	def image_params
-		params.require(:image).permit(:image, :caption, :comment)
+		params.require(:image).permit(:image, :address, :latitude, :longitude, :caption, :comment, :category_id)
 	end
 end

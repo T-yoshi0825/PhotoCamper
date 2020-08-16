@@ -1,0 +1,26 @@
+<div class="row">
+	<div class="midashi">登録情報編集</div>
+		<div class="acount-profile">
+			<%= form_for(@user) do |f| %>
+			  <div class="acount_image">
+				  <%= attachment_image_tag f.user, :profile_image, :fill, 100, 100, class: "image-circle pull-left profile_thumd", fallback: "no_image.jpg" %>
+        <br>
+        <div class="image_field">
+	        <%= f.attachment_field :profile_image, placeholder: "プロフィール画像", class: "edit_form" %>
+        </div>
+	      <div class="field">
+          <%= f.label :name, "名前", class: "form_label" %><br />
+          <%= f.text_field :name, autofocus: true, autocomplete:"family-name", class: "form_input_s"%>
+        </div>
+        <div class="field">
+          <%= f.label :email, "メールアドレス", class: "form_label" %><br />
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form_input" %>
+        </div>
+        <br>
+        <div class="actions">
+          <%= f.submit "編集", class: "form_submit white_txt bold" %>
+        </div>
+      <% end %>
+    </div>
+</div>
+      

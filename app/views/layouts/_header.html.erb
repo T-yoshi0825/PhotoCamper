@@ -1,44 +1,63 @@
- <header class="navbar navber-static-top navbar-inverse">
-      <div class="container">
-        <nav class="navbar-text navbar-left">
-        <em>PhotoCamper</em>
-        </nav>
-          <ul class="nav navbar-nav navbar-right" >
-          <% if user_signed_in? %>
-          <li class="">
-          <%= link_to user_path(current_user.id) do %>
-          <span class="glyphicon glyphicon-home" aria-hidden="true">　Home</span>
-          <% end %>
-          </li>
-          <li class="">
-          <%= link_to users_path do %>
-          <span class="glyphicon glyphicon-user" aria-hidden="true">　会員一覧</span>
-          <% end %>
-          </li>
-          <li class="">
-          <%= link_to images_path do %>
-          <span class="glyphicon glyphicon-book" aria-hidden="true"> 投稿一覧</span>
-          <% end %>
-          </li>
-          <li class="">
-          <%= link_to destroy_user_session_path, method: :delete do %>
-          <span class="glyphicon glyphicon-log-out" aria-hidden="true">　logout</span>
-          <% end %>
-          </li>
-          <% else %>
-          <li class="">
-          <%= link_to'Home', root_path %>
-          </li>
-          <li class="">
-          <%= link_to'About', home_about_path %>
-          </li>
-          <li class="">
-          <%= link_to "sign up", new_user_registration_path %>
-          </li>
-          <li class="">
-          <%= link_to "login", new_user_session_path %>
-          </li>
-          <% end %>
-          </ul>
-      </div>
-    </header>
+<header class="navbar navbar-default">
+    <div class="container-fluid">
+        <header>
+            <div class="header-text">
+                <nav class="navbar-text navbar-left">
+                  <em>PhotoCamper</em>
+                </nav>
+                <ul class="nav navbar-nav navbar-right" >
+
+                <% if user_signed_in? %>
+                  <li class="ユーザー">
+                    <%= link_to user_path(current_user) do %>
+                      <span class="glyphicon glyphicon-home" aria-hidden="true">　マイページ</span>
+                    <% end %>
+                  </li>
+                  <li class="ユーザー">
+                    <%= link_to users_path do %>
+                      <span class="glyphicon glyphicon-user" aria-hidden="true">　会員一覧</span>
+                    <% end %>
+                  </li>
+                  <li class="ユーザー">
+                    <%= link_to images_path do %>
+                      <span class="glyphicon glyphicon-book" aria-hidden="true"> 投稿一覧</span>
+                    <% end %>
+                  </li>
+                  <li class="ユーザー">
+                    <%= link_to destroy_user_session_path, method: :delete do %>
+                      <span class="glyphicon glyphicon-log-out" aria-hidden="true">　logout</span>
+                    <% end %>
+                  </li>
+
+                <% elsif admin_signed_in? %>
+                  <li class="管理者">
+                    <%= link_to "投稿一覧", admins_images_path %> 
+                  </li>
+                  <li class="管理者">
+                    <%= link_to "会員一覧", admins_users_path %>
+                  </li>
+                  <li class="管理者">
+                    <%= link_to "カテゴリー", admins_categories_path %>
+                  </li>
+                  <li class="管理者">
+                    <%= link_to "logout", destroy_admin_session_path, method: :delete %>
+                  </li>
+                <% else %>
+                  <li class="ゲストユーザー">
+                    <%= link_to'Home', root_path %>
+                  </li>
+                  <li class="ゲストユーザー">
+                    <%= link_to'About', home_about_path %>
+                  </li>
+                  <li class="ゲストユーザー">
+                    <%= link_to "sign up", new_user_registration_path %>
+                  </li>
+                  <li class="ゲストユーザー">
+                    <%= link_to "login", new_user_session_path %>
+                  </li>
+                <% end %>
+                </ul>
+            </div>
+        </header>
+    </div>
+</header>
