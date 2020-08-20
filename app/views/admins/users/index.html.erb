@@ -1,47 +1,45 @@
-<div class="row">
-	<div class="text-center">
-		<div class="col-sm-9">
-			<div class="user_profile">
-				<table  class="table product_table txts table-hover table-inverse">
-					<thead>
-						<tr>
-							<th>会員ID</th>
-							<th>氏名</th>
-							<th>メールアドレス</th>
-							<th>ステータス</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<% @users. each do |user| %>
-								<div class="ID">
-									<td><%= user.id %></td>
-									<td>
-										<div class="image">
-											<%= attachment_image_tag(@user,:profile_image, :fill, 100, 100, class:"image-circle", fallback: "no_image.jpg") %>
-										</div>
-										<div class="name">
-											<%= user.name %>
-										</div>
-									</td>
-								</div>
-								<div class="email">
-									<td><%= user.email %></td>
-								</div>
-								<div class="acount_status">
-									<td>
-										<% if user.acount_status == true %>
-											<p class="true_txt">有効</p>
-											<% else %>
-											<p class="false_txt">退会済み</p>	
-										<% end %>
-									</td>
-								</div>
-						　	<% end %>
-						</tr>
-					</tbody>
-				</table>
-			</div>
+<div class="container">
+	<div class="row">
+		<div class="admin-user-profile">
+			<table  class="table product_table txts table-hover table-inverse">
+				<thead>
+					<tr>
+						<th>会員ID</th>
+						<th>氏名</th>
+						<th>メールアドレス</th>
+						<th>ステータス</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<% @users. each do |user| %>
+							<div class="ID">
+								<td><%= user.id %></td>
+								<td>
+									<div class="image">
+										<%= attachment_image_tag(@user,:profile_image, :fill, 100, 100, class:"image-circle", fallback: "no_image.jpg") %>
+									</div>
+									<div class="name">
+										<%= user.name %>
+									</div>
+								</td>
+							</div>
+							<div class="email">
+								<td><%= user.email %></td>
+							</div>
+							<div class="acount_status">
+								<td>
+									<% if user.acount_status == true %>
+										<p class="true_txt">有効</p>
+										<% else %>
+										<p class="false_txt">退会済み</p>	
+									<% end %>
+								</td>
+							</div>
+					　	<% end %>
+					</tr>
+				</tbody>
+			</table>
 		</div>
-    </div>
+	</div>
 </div>
