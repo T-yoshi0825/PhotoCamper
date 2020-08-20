@@ -1,63 +1,79 @@
-<header class="navbar navbar-default">
-    <div class="container-fluid">
-        <header>
-            <div class="header-text">
-                <nav class="navbar-text navbar-left">
-                  <em>PhotoCamper</em>
-                </nav>
-                <ul class="nav navbar-nav navbar-right" >
-
-                <% if user_signed_in? %>
-                  <li class="ユーザー">
-                    <%= link_to user_path(current_user) do %>
-                      <span class="glyphicon glyphicon-home" aria-hidden="true">　マイページ</span>
+<header>
+    <div class="sidebar-content">
+        <input type="checkbox" class="openSidebarMenu" id="openSidebarMenu">
+        <label for="openSidebarMenu" class="sidebarIconToggle">
+            <div class="spinner diagonal part-1"></div>
+            <div class="spinner horizontal"></div>
+            <div class="spinner diagonal part-2"></div>
+        </label>
+        <div id="sidebarMenu">
+            <ul class="sidebarMenuInner">
+                
+                <h3 class="category-title">カテゴリー一覧</h3>
+                <% @categories.each do |category| %>
+                    <% if category.active_status == true %>
+                        <li>
+                            <%= link_to admins_category_path(category) do %>
+                             <%= category.name %>
+                            <% end %>
+                        </li>
                     <% end %>
-                  </li>
-                  <li class="ユーザー">
-                    <%= link_to users_path do %>
-                      <span class="glyphicon glyphicon-user" aria-hidden="true">　会員一覧</span>
-                    <% end %>
-                  </li>
-                  <li class="ユーザー">
-                    <%= link_to images_path do %>
-                      <span class="glyphicon glyphicon-book" aria-hidden="true"> 投稿一覧</span>
-                    <% end %>
-                  </li>
-                  <li class="ユーザー">
-                    <%= link_to destroy_user_session_path, method: :delete do %>
-                      <span class="glyphicon glyphicon-log-out" aria-hidden="true">　logout</span>
-                    <% end %>
-                  </li>
-
-                <% elsif admin_signed_in? %>
-                  <li class="管理者">
-                    <%= link_to "投稿一覧", admins_images_path %> 
-                  </li>
-                  <li class="管理者">
-                    <%= link_to "会員一覧", admins_users_path %>
-                  </li>
-                  <li class="管理者">
-                    <%= link_to "カテゴリー", admins_categories_path %>
-                  </li>
-                  <li class="管理者">
-                    <%= link_to "logout", destroy_admin_session_path, method: :delete %>
-                  </li>
-                <% else %>
-                  <li class="ゲストユーザー">
-                    <%= link_to'Home', root_path %>
-                  </li>
-                  <li class="ゲストユーザー">
-                    <%= link_to'About', home_about_path %>
-                  </li>
-                  <li class="ゲストユーザー">
-                    <%= link_to "sign up", new_user_registration_path %>
-                  </li>
-                  <li class="ゲストユーザー">
-                    <%= link_to "login", new_user_session_path %>
-                  </li>
                 <% end %>
-                </ul>
-            </div>
-        </header>
+                <%= link_to new_image_path do %>
+                    <h2 class="new_post">新規投稿</h2>
+                <% end %>
+            </ul>
+        </div>
+    </div>
+
+    <div class="header-content"> 
+        <ul class="nav navbar-nav navbar-right" >
+            <% if user_signed_in? %>
+
+              <li class="user">
+                <%= link_to user_path(current_user) do %>
+                  <span class="glyphicon glyphicon-home" aria-hidden="true">　マイページ</span>
+                <% end %>
+              </li>
+
+              <li class="user">
+                <%= link_to destroy_user_session_path, method: :delete do %>
+                  <span class="glyphicon glyphicon-log-out" aria-hidden="true">　logout</span>
+                <% end %>
+              </li>
+
+            <% elsif admin_signed_in? %>
+
+              <li class="admin">
+                <%= link_to "投稿一覧", admins_images_path %> 
+              </li>
+
+              <li class="admin">
+                <%= link_to "会員一覧", admins_users_path %>
+              </li>
+
+              <li class="admin">
+                <%= link_to "カテゴリー", admins_categories_path %>
+              </li>
+
+              <li class="admin">
+                <%= link_to "logout", destroy_admin_session_path, method: :delete %>
+              </li>
+
+            <% else %>
+              <li class="guests">
+                <%= link_to'Home', root_path %>
+              </li>
+
+              <li class="guests">
+                <%= link_to'About', home_about_path %>
+              </li>
+
+              <li class="guests">
+                <%= link_to "login", new_user_session_path %>
+              </li>
+
+            <% end %>
+        </ul>
     </div>
 </header>

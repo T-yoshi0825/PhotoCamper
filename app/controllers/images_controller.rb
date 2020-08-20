@@ -14,6 +14,7 @@ class ImagesController < ApplicationController
 
 	def index	
 		@images = Image.all
+		@categories = Category.where(active_status: :true)
 	end
 
 	def show

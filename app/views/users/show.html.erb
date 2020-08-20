@@ -1,15 +1,41 @@
-<div class="row">
-    <h2 class="midashi">登録詳細</h2>
-    	<div class="image">
-            <%= attachment_image_tag(@user,:profile_image, :fill, 100, 100, class:"image-circle", fallback: "no_image.jpg") %>
-    	</div>
-        <br>
-        <div class="acount_name">
-        	<%= @user.name %>
-        </div>
-        <br>
-        <div class="email">
-        	<%= @user.email %>
-        </div>
-</div>
+<div class="container">
+    <div class="row">
+        <div class="user-content">
+            <div class="text-center">
+                <h2 class="user-show-title">登録詳細</h2>
+            </div>
 
+                <table>
+
+                    <tr>
+                        <th>プロフィール画像</th>
+                        <td class="acount-image">
+                        <%= attachment_image_tag(@user,:profile_image, :fill, 200, 200, class: "image-circle", fallback: "no_image.jpg") %>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th>名前</th>
+                        <td class="acount-name">
+                        <%= @user.name %>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th>メールアドレス</th>
+                        <td class="acount-email">
+                        <%= @user.email %>
+                        </td>
+                    </tr>
+
+                </table>
+
+            <br>
+
+            <div class="actions">
+                <%= link_to "登録内容編集", edit_user_path(@user), class: "btn btn-success btn-block" %>
+            </div>
+
+        </div>
+    </div>
+</div>
