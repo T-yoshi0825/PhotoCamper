@@ -1,47 +1,30 @@
-<div class="row">
-	<div class="midashi">投稿編集</div>
-		<div class="post-image">
-			<%= form_for(@image) do |f| %>
-			<div class="edit_image">
-				<%= attachment_image_tag @image, :image, :fill, 100, 100, class: "image-thumbnail", fallback: "noimage.png" %>
-		  </div>
-      <%= f.attachment_field :image, placeholder: "投稿画像", class: "edit_form" %>
+<div class="container">
+    <div class="row">
+        <div class="edit-title">投稿編集</div>
+            <div class="post-edit-content">
+
+              <%= render "layouts/errors", obj: @image %>
+
+              <%= form_for(@image) do |f| %>
+
+              <div class="post-image">
+                  <%= attachment_image_tag @image, :image, :fill, 100, 100, class: "image-thumbnail", fallback: "noimage.png" %>
+              </div>
+
+              <div class="image-field">
+                  <%= f.attachment_field :image, placeholder: "投稿画像", class: "edit_form" %>
+              </div>
+
+              <div class="field">
+                <%= f.label :caption, "投稿説明", class: "form_label" %><br />
+                <%= f.text_field :caption, class: "form_input" %>
+              </div>
+
+              <div class="actions">
+                <%= f.submit "編集を保存する", class: "btn btn-success btn-block" %>
+              </div>
+
+              <% end %>
+          </div>
     </div>
-      <div class="field">
-        <%= f.label :caption, "投稿説明", class: "form_label" %><br />
-        <%= f.text_field :caption, class: "form_input" %>
-      </div>
-
-      <div class="actions">
-        <%= f.submit "編集を保存する", class: "btn btn-lg btn-block" %>
-      </div>
-      <% end %>
 </div>
-
-<div class="caption">
-                  <%= link_to image_path(image) do %>
-                  <%= image.caption %>
-                  <% end %>
-                </div>
-
-        　　　　　<div class="favorite">
-                    <% if image.favorited_by?(current_user) %>
-                        <div>
-                            <%= link_to image_favorite_path(image), method: :delete do %>
-                            <p class="fa fa-heart" aria-hidden = "true" style = "color: red;" ></p>
-                            <%= image.favorites.count %>
-                            <% end %>
-                        </div>
-                    <% else %>
-                        <div>
-                            <%= link_to image_favorites_path(image), method: :post do %>
-                            <p class="fa fa-heart-o" aria-hedden = "true" ></p>
-                            <%= image.favorites.count %>
-                            <% end %>
-                        </div>
-                    <% end %>
-                </div>
-
-                <div class="comment-count">
-                    <h6><%= image.comments.count %>件コメント</h6>
-                </div>

@@ -1,17 +1,58 @@
-<div class="row">	
-	<div class="text-center">
-		<div class="inquiry-form">
-			<h3>お問い合わせフォーム</h3>
-			<br>
-			<%= form_for @inquiry, url: confirm_inquiries_path, method: :get do |f| %>
-				<%= f.label :お問い合わせ内容　%><br>
-				<%= f.text_field :message %><br>
-				<%= f.label :お名前 %><br>
-				<%= f.text_field :name %><br>
-				<%= f.label :メールアドレス %><br>
-				<%= f.text_field :email %><br>
-			  <%= f.submit '送信' %>
-			<% end %>
+<div class="container">
+	<div class="row">
+		<div class="inquiry-contents">
+
+			<h1 class= "inquiry-title">お問い合わせフォーム</h1>
+
+			<div class="stepbar-contents">
+				<ul class="nav nav-pills nav-justified btn-lg">
+		            <li role="presentation" class="active">
+		            	<a>step1<br>情報の入力</a>
+		            </li>
+		            <li role="presentation" ><a>step2<br>入力内容の確認</a></li>
+		            <li role="presentation" ><a>step3<br>受付完了</a></li>
+		    	</ul>
+		    </div>
+
+			<div class="inquiry-form-cont">
+				<%= form_for @inquiry, url: confirm_inquiries_path, method: :get do |f| %>
+
+					<div class="field">
+						<h3 class="form-title">お問い合わせ内容を記入してください</h3>
+							<div class="input-group input-group-lg">
+								<%= f.label :message, "お問い合わせ", class: "input-group-addon" %>
+                          		<%= f.text_area :message, autofocus: true, autocomplete:"inquiry", class: "form_input btn-block" %>
+							</div>
+					</div>
+
+					<div class="field">
+						<h3 class="form-title">お客様情報を記入してください</h3>
+							<div class="input-group">
+                            	<%= f.label :name, "名前", class: "input-group-addon" %>
+                          		<%= f.text_field :name, autofocus: true, autocomplete:"name", class: "form_input btn-block" %>
+                        		
+							</div>
+
+							<div class="input-group">
+								<%= f.label :email, "メールアドレス", class: "input-group-addon" %>
+                          		<%= f.text_field :email, autofocus: true, autocomplete:"email", class: "form_input btn-block" %>
+								<h5>確認のため、再度メールアドレスの入力をお願いします。</h5>
+								<%= f.text_field :email, autofocus: true, autocomplete:"email", class: "form_input btn-block" %>
+							</div>
+					</div>
+
+					<div class="inquiry-text">
+						<p>「入力内容の確認画面へ」のボタンをクリックし、入力内容の確認をお願いします。<br>
+							ご入力、誠にありがとうございます。
+						</p>
+					</div>
+
+					<div class="actions">
+				  		<%= f.submit '入力内容の確認画面へ', class: "btn btn-primary btn-lg" %>
+				  	</div>
+
+				<% end %>
+			</div>
 		</div>
-	</div>	
+	</div>
 </div>

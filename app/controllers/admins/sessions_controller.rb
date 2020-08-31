@@ -24,4 +24,10 @@ class Admins::SessionsController < Devise::SessionsController
   # def configure_sign_in_params
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
+
+  def new
+    @categories = Category.where(active_status: :true)
+    super
+   end
+   
 end

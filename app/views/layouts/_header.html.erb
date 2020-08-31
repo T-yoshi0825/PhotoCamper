@@ -8,72 +8,101 @@
         </label>
         <div id="sidebarMenu">
             <ul class="sidebarMenuInner">
-                
-                <h3 class="category-title">カテゴリー一覧</h3>
-                <% @categories.each do |category| %>
-                    <% if category.active_status == true %>
-                        <li>
-                            <%= link_to admins_category_path(category) do %>
-                             <%= category.name %>
-                            <% end %>
-                        </li>
+                            
+                <div class="sidebar-title">カテゴリー</div>
+                    <% @categories.each do |category| %>
+                      <% if category.active_status == true %>
+                          <li><%=link_to category_path(category) do %>
+                              <%= category.name %>
+                              <% end %>
+                          </li>
+                      <% end %>
                     <% end %>
-                <% end %>
-                <%= link_to new_image_path do %>
-                    <h2 class="new_post">新規投稿</h2>
-                <% end %>
+
             </ul>
         </div>
     </div>
 
-    <div class="header-content"> 
-        <ul class="nav navbar-nav navbar-right" >
-            <% if user_signed_in? %>
+    <div class="header-content">
+        <div class="drawer">
 
-              <li class="user">
-                <%= link_to user_path(current_user) do %>
-                  <span class="glyphicon glyphicon-home" aria-hidden="true">　マイページ</span>
-                <% end %>
-              </li>
+            <!-- ハンバーガーメニューの表示・非表示を切り替えるチェックボックス -->
+            <input type="checkbox" id="drawer-check" class="drawer-hidden" >
+            <!-- ハンバーガーアイコン -->
+            <label for="drawer-check" class="drawer-open"><span></span></label>
 
-              <li class="user">
-                <%= link_to destroy_user_session_path, method: :delete do %>
-                  <span class="glyphicon glyphicon-log-out" aria-hidden="true">　logout</span>
-                <% end %>
-              </li>
+            <nav class="drawer-content">
+                <ul class="nav navbar-nav navbar-right drawer-list" >
+                    <% if user_signed_in? %>
 
-            <% elsif admin_signed_in? %>
+                      <li class="drawer-item">
+                        <%= link_to new_image_path do %>
+                          <span class="new_post">　新規投稿</span>
+                        <% end %>
+                      </li>
 
-              <li class="admin">
-                <%= link_to "投稿一覧", admins_images_path %> 
-              </li>
+                      <li class="drawer-item">
+                        <%= link_to images_path do %>
+                          <span class="new_post">　投稿一覧</span>
+                        <% end %>
+                      </li>
 
-              <li class="admin">
-                <%= link_to "会員一覧", admins_users_path %>
-              </li>
+                      <li class="drawer-item">
+                        <%= link_to user_path(current_user) do %>
+                          <span class="mypege">　マイページ</span>
+                        <% end %>
+                      </li>
 
-              <li class="admin">
-                <%= link_to "カテゴリー", admins_categories_path %>
-              </li>
+                      <li class="drawer-item">
+                        <%= link_to new_inquiry_path do %>
+                          <span class="mypege">　お問い合わせ</span>
+                        <% end %>
+                      </li>
 
-              <li class="admin">
-                <%= link_to "logout", destroy_admin_session_path, method: :delete %>
-              </li>
+                      <li class="drawer-item">
+                        <%= link_to destroy_user_session_path, method: :delete do %>
+                          <span class="logout">　logout</span>
+                        <% end %>
+                      </li>
 
-            <% else %>
-              <li class="guests">
-                <%= link_to'Home', root_path %>
-              </li>
+                    <% elsif admin_signed_in? %>
 
-              <li class="guests">
-                <%= link_to'About', home_about_path %>
-              </li>
+                      <li class="drawer-item">
+                        <%= link_to "Home", admins_home_path %> 
+                      </li>
 
-              <li class="guests">
-                <%= link_to "login", new_user_session_path %>
-              </li>
+                      <li class="drawer-item">
+                        <%= link_to "投稿一覧", admins_images_path %> 
+                      </li>
 
-            <% end %>
-        </ul>
+                      <li class="drawer-item">
+                        <%= link_to "会員一覧", admins_users_path %>
+                      </li>
+
+                      <li class="drawer-item">
+                        <%= link_to "カテゴリー", admins_categories_path %>
+                      </li>
+
+                      <li class="drawer-item">
+                        <%= link_to "logout", destroy_admin_session_path, method: :delete %>
+                      </li>
+
+                    <% else %>
+                      <li class="drawer-item">
+                        <%= link_to'Home', root_path %>
+                      </li>
+
+                      <li class="drawer-item">
+                        <%= link_to'About', home_about_path %>
+                      </li>
+
+                      <li class="drawer-item">
+                        <%= link_to "login", new_user_session_path %>
+                      </li>
+
+                    <% end %>
+                </ul>
+            </nav>
+        </div>
     </div>
 </header>

@@ -1,15 +1,15 @@
-<div class="container">
+<div class="container-fluid">
 	<div class="row">
 		<div class="admin-top-content">
 			<table>
 			 	<tr>
-			 		<th>投稿件数</th>
-			 			<td></td>
+			 		<th><h1>投稿件数</h1></th>
+			 			<td class="image-count"><%= Image.count %>件</td>
 			 	</tr>
 			 	
 			 	<tr>
-			 		<th>お問い合わせ件数</th>
-			 			<td></td>
+			 		<th><h1>お問い合わせ件数</h1></th>
+			 			<td class="inquiry-count"><%= Inquiry.count %>件</td>
 			 	</tr>
 			</table>
 		</div>

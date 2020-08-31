@@ -14,179 +14,294 @@
  *= require_self
  */
 @import "bootstrap-sprockets"; 
-@import "bootstrap"; 
+@import "bootstrap";
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	background-color: #DDDDDD;
+}
+
+.container {
+	padding: 0;
+}
+
+.row {
+	margin-top: 80px;
+}
+
+.field {
+	margin-bottom: 30px;
+}
+
+table {
+	margin: 0 auto;
+	font-size: 17px;
+}
+
+ul {
+	padding: 0;
+}
+
+li {
+	list-style: none;
+}
+
+.actions {
+	text-align: center;
+}
+
 
 header {
-	width:100%;
-	height:60px;
-	margin:0;
-	padding:0;
-
-	background-color:#848282;
+	width: 100%;
+	height: 80px;
+	z-index: 1;
+	margin: 0;
+	padding: 0;
+	position: fixed;
+	background-color: #848282;
 }
 
 .header-content {
-	margin:0;
-	padding:7px 0;
+	margin-right: 30px;
 }
 
-.header-text {
-	color:#000;
+a {
+	color: #000;
+	font-size: 15px;
 }
 
 /*-----signup/login-----*/
 
 .admin-login-content {
-	width:40%;
-	height:74vh;
-	margin:0 auto;
+	width: 40%;
+	height: 100vh;
+	margin: 0 auto;
 }
 
 .user-signup-content {
-	width:40%;
-	height:74vh;
-	margin:0 auto;
+	width: 40%;
+	height: 120vh;
+	margin: 0 auto;
 }
 
 .signup-title {
-	text-align:center;
+	text-align: center;
 }
 
 .user-login-content {
-	width:40%;
-	height:74vh;
-	margin:0 auto;
+	width: 40%;
+	height: 100vh;
+	margin: 0 auto;
 }
 
 .login-title {
-	text-align:center;
+	text-align: center;
+	margin-top: 80px;
+	margin-bottom: 50px;
 }
 
 .passwords-edit {
-	text-align:center;
+	text-align: center;
 }
 
 .OmniAuth-title {
-	text-align:center;
+	text-align: center;
 }
 
 .OmniAuth-content {
-	text-align:center;
-	margin:0 auto;
+	text-align: center;
+	margin: 0 auto;
 }
 
-.password-edit {
-	
+.passwords-edit {
+	text-align: left;
 }
 
-.actions {
-	text-align:center;
+.facebook-icon {
+	color: #0066CC;
+}
+
+.twitter-icon {
+	color: #3399FF;
+}
+
+.google-icon {
+	color: #CC0000;
 }
 
 /*-----user/show/edit-----*/
 
-.user-content {
-	width:40%;
-	height:74vh;
-	margin:0 auto;
-	padding:100px 0;
+.user-show-title {
+	margin: 80px;
 }
 
-table {
-	margin:0 auto;
+.user-content {
+	width: 60%;
+	height: 200px;
+	margin: 100px auto;
+	margin-bottom: 0;
+	padding: 0;
+}
+
+.user-actions {
+	width: 550px;
+	margin: 70px auto;
+	text-align: center;
+}
+
+.border-row {
+	margin: 80px;
+}
+
+hr {
+	border-width: 0 0 8px;
+	border-style: solid;
+	border-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2 1"><circle fill="hsla(0, 0%, 65%, 1.0)" cx="1" cy="0.5" r="0.5"/></svg>') 0 0 100% repeat;
+	width: 90%;
 }
 
 .user-edit-content {
-	width:40%;
-	height:74vh;
-	margin:0 auto;
-	padding:100px 0;
+	width: 40%;
+	margin: 0 auto;
+	padding: 30px 0;
+}
+
+.edit-cont {
+	margin: 30px;
 }
 
 /*-----admin-top-----*/
 
 .admin-top-content {
-	width:40%;
-	height:74vh;
-	margin:0 auto;
-	padding:100px 0;
+	width: 100%;
+	height: 85vh;
+	margin: 0 auto;
+	padding: 200px 0;
+	background-image: image-url(AdobeStock.jpg);
+	background-size: cover;
+	background-position: bottom;
+	color: #FFF;
+}
+
+.image-count {
+	font-size: xxx-large;
+}
+
+.top-cont {
+	margin: 0 auto;
+}
+
+.inquiry-count {
+	font-size: xxx-large;
 }
 
 .admin-user-profile {
-	height:auto;
-	height:100vh;
+	height: auto;
+	height: 100vh;
 }
 
-.active-status-field {
-	
+.admins_user-content {
+	height: 74vh;
 }
 
-.category-actions {
-	
+.category-title {
+	margin: 50px;
+}
+
+.category-edit-cont {
+	height: 85vh;
+	padding-top: 80px;
+	text-align: center;
 }
 
 /*-----top-----*/
 .main-visual {
-	width:100%;
-	height:600px;
-	background-image:url(AdobeStock1.jpg);
-	background-size:cover;
+	width: 100%;
+	height: 600px;
+	margin-top: 30px;
+	margin-bottom: 30px;
+	background-image: image-url(AdobeStock1.jpg);
+	background-size: cover;
 }
 
 .main-visual-content {
-	width:40%;
-	height:600px;
-	background-color:rgba(0,0,0,0.5);
-	text-align:center;
-	padding-top:280px;
-	color:#fff;
+	width: 40%;
+	height: 600px;
+	background-color: rgba(0,0,0,0.5);
+	text-align: center;
+	padding-top: 280px;
+	color: #fff;
+}
+
+.top-actions {
+	text-align: center;
+	margin: 50px;
 }
 
 /*-----about-----*/
+
 .about-content {
-	width:100%;
-	height:auto;
+	width: 100%;
+	height: auto;
 }
 
 .about-title {
-	width:100%;
-	height:300px;
-	background-color:#EEEEEE;
-	text-align:center;
-	padding-top:105px;
-	color:#000;
+	width: 100%;
+	height: 300px;
+	background-color: #EEEEEE;
+	text-align: center;
+	padding-top: 80px;
+	color: #000;
 }
 
 .site-title {
-	text-align:center;
+	text-align: center;
 }
 
 .caption-title-1 {
-	width:100%;
-	height:400px;
-	background-image:url(AdobeStock2.jpg);
-	background-position:center;
-	background-size:cover;
-	text-align:center;
-	padding-top:170px;
-	color:#fff;
+	width: 100%;
+	height: 400px;
+	background-image: image-url(AdobeStock2.jpg);
+	background-position: center;
+	background-size: cover;
+	text-align: center;
+	padding-top: 170px;
+	color: #fff;
 }
 
 .caption-title-2 {
-	width:100%;
-	height:400px;
-	background-image:url(AdobeStock3.jpg);
-	background-position:center;
-	background-size:cover;
-	text-align:center;
-	padding-top:170px;
-	color:#fff;
+	width: 100%;
+	height: 400px;
+	background-image: image-url(AdobeStock3.jpg);
+	background-position: center;
+	background-size: cover;
+	text-align: center;
+	padding-top: 170px;
+	color: #fff;
 }
 
 /*-----image-----*/
+
+.navs {
+	margin-top: 140px;
+	margin-bottom: 80px;
+}
+
+.nav-pills {
+	padding: 0;
+	color: #FFF;
+	background-color: #FFF;
+}
+
 main {
-	min-height:150vh;
-	margin:0 auto;
+	width: 90%;
+	height: auto;
+	min-height: 200vh;
+	margin: 0 auto;
 }
 
 .clearfix::after {
@@ -196,35 +311,110 @@ main {
 }
 
 .float-content {
-	text-align:center;
-	float:right;
+	height: 500px;
+	text-align: center;
+	float: left;
+	margin-left: 20px;
+	margin-bottom: 20px;
+}
+
+.fct-profile-cont {
+	background-color: #EEEEEE;
+}
+
+.show-profile-cont {
+	width: 550px; 
+	background-color: #EEEEEE;
+}
+
+.fct-cont {
+	text-align: right;
+}
+
+.post-image-title {
+	text-align: left;
+	margin-left: 20px;
+	font-size: 24px;
+}
+
+.acount-profile {
+	margin-right: 20px;
+	text-align: left;
+}
+
+.acount > table {
+	margin: 0;
+}
+
+.new-post-content {
+	width: 60%;
+	height: 500px;
+	margin: 150px auto;
+}
+
+.edit-title {
+	margin: 70px;
+	text-align: center;
+}
+
+.image-edit-content {
+	height: 80vh;
+}
+
+.image-field {
+	margin-bottom: 50px;
+}
+
+/*-----image-show-----*/
+
+.show-title {
+	text-align: center;
+	margin-top: 30px;
+	margin-bottom: 80px;
+}
+
+.show1 {
+	height: 730px;
+	margin-top: 120px;
+}
+
+.show2 {
+	height: 600px;
+	margin-top: 30px;
+}
+
+#map {
+	width: auto;
+	height: 240px;
+}
+
+.comment-index {
+	margin: 0;
 }
 
 /*-----sidebar-----*/
 
-.sidebar {
-	height:160vh;
-	min-height:100vh;
-	background-color:#808080;
-	text-align:center;
-	font-size:20px;
+.sidebar-title {
+	margin-top: 30px;
+	font-size: 28px;
+    color: #000;
 }
-
 #sidebarMenu {
     height: 100%;
     position: fixed;
     left: 0;
     width: 250px;
-    margin-top: 60px;
+    margin-top: 80px;
+    margin-bottom: 80px;
     transform: translateX(-250px);
     transition: transform 250ms ease-in-out;
-    background: linear-gradient(180deg, #DD0000 0%, #FF570D 50%, #996600 100%);
+    background: linear-gradient(180deg, #FF6600 0%, #000 100%);
 }
 
 .sidebarMenuInner{
-    margin:0;
-    padding:0;
-    text-align:center;
+    margin: 0;
+    padding: 0;
+    text-align: center;
     border-top: 1px solid rgba(255, 255, 255, 0.10);
 }
 
@@ -260,8 +450,8 @@ main {
     z-index: 99;
     height: 100%;
     width: 100%;
-    top: 22px;
-    left: 15px;
+    top: 30px;
+    left: 30px;
     height: 22px;
     width: 22px;
 }
@@ -328,26 +518,294 @@ input[type=checkbox]:checked ~ .sidebarIconToggle > .diagonal.part-2 {
     margin-top: -9px;
 }
 
-
-row {
-	display:flex;
-	min-height:100vh;
+.inquiry-link {
+	color: #FFFF99;
+	font-size: 10px;
 }
 
-li {
-	list-style:none;
+/*-----inquiry-----*/
+
+.inquiry-contents {
+	width: 60%;
+	height: 700px;
+	margin: 0 auto;
+	padding: 0;
+}
+
+.inquiry-title {
+	text-align: center;
+	margin: 40px;
+	background: linear-gradient(transparent 70%, #FF6600 70%);
+}
+
+.stepbar-contents {
+	margin-bottom: 60px;
+}
+
+.inquiry-text {
+	text-align: center;
+	margin-bottom: 30px;
+}
+
+.field {
+	margin-bottom: 50px;
+}
+
+.thanks-title {
+	margin-top: 200px;
+	text-align: center;
+	border-bottom: double 6px #87CEFA;
 }
 
 footer {
-	width:100%;
-	height:80px;
-	text-align:center;
-	margin:0;
-	padding:30px 0;
-	background-color:#848282;
+	width: 100%;
+	height: 80px;
+	text-align: center;
+	margin: 0;
+	padding: 30px 0;
+	z-index: 99;
+	background-color: #848282;
 	
 }
 
-.footer-text {
-	color:#000;
+.footer-content {
+	color: #000;
 }
+
+/*----------レスポンシブ----------*/
+
+/* タブレット横置きサイズ（1024px）以下の際に適用される設定 */
+@media screen and (max-width:1024px) {
+
+	.float-content {
+		height: 860px;
+		float: none;
+	}
+
+	.fct-profile-cont {
+	    width: 580px;
+	    margin: 0 auto;
+	    background-color: #EEEEEE;
+    }
+
+    .post-image {
+	    width: 580px;
+	    height: 600px;
+	    margin: 0 auto;
+    }
+}
+
+
+/* タブレット縦置きサイズ（768px）以下の際に適用される設定 */
+@media screen and (max-width:768px) {
+
+	.main-visual {
+		background-image: image-url(ahmed-zayan-6h0xlEZoYZY-unsplash.jpg);
+		height: 1000px;
+	}
+
+	.main-visual-content {
+		height: 1000px;
+	}
+	
+	.show-image {
+		width: 450px;
+		height: 430px;
+	}
+
+	.show-profile-cont {
+	    width: 450px;
+	    margin: 0 auto;
+	    background-color: #EEEEEE;
+    }
+}
+
+
+/* スマートフォンサイズ（425px）以下の際に適用される設定 */
+@media screen and (max-width:425px) {
+
+	.main-visual {
+		background-image: image-url(ahmed-zayan-6h0xlEZoYZY-unsplash.jpg);
+	}
+
+	.show {
+		height: auto;
+	}
+
+	.show1 {
+		height: 1200px;
+	}
+
+	#sidebarMenu {
+		width: 150px;
+	}
+
+	.float-content {
+		height: 550px;
+		float: none;
+	}
+
+	.fct-profile-cont {
+	    width: 350px;
+	    margin: 0 auto;
+	    background-color: #EEEEEE;
+    }
+
+    .post-image {
+    	width: 350px;
+    	height: 350px;
+	    margin: 0 auto;
+    }
+
+    .show-image {
+    	width: 425px;
+    }
+
+    .show-profile-cont {
+    	width: 425px;
+    }
+
+    .comment-title {
+    	margin-left: 30px; 
+    }
+
+    .user-content {
+    	width: 80%;
+    	height: 250px;
+    }
+
+    .user-show-title {
+    	margin: 0;
+	    margin-top: 40px;
+	    margin-bottom: 80px;
+	}
+
+	.user-image {
+		width: 100px;
+		height: 100px;
+	}
+
+	.user-actions {
+		width: 400px;
+	}
+
+	hr {
+		width: 100%;
+	}
+
+	.edit-image {
+		width: 350px;
+		height: 330px;
+	}
+
+	.image-edit-content {
+    	height: 100vh;
+	}
+
+	.edit-title {
+	    margin-top: 70px;
+	    margin-bottom: 70px;
+	}
+
+	.user-edit-content {
+		width: 400px;
+		height: 700px;
+		padding: 0;
+	}
+
+	.user-edit-image {
+		width: 100px;
+		height: 100px;
+	}
+
+	.user-edit-btn {
+		width: 300px;
+	}
+
+	.new-post-content {
+		margin: 100px auto;
+	}
+
+	h2, {
+		margin-bottom: 70px;
+	}
+
+
+
+    /* チェックボックスは非表示に */
+	.drawer-hidden {
+	  display: none;
+	}
+
+	/* ハンバーガーアイコンの設置スペース */
+	.drawer-open {
+	  height: 44px;
+	  width: 100%;
+	  padding-top: 32px;
+      margin-left: 370px;
+	  justify-content: center;
+	  align-items: center;
+	  position: relative;
+	  z-index: 100;
+	  cursor: pointer;
+	}
+
+	/* ハンバーガーメニューのアイコン */
+	.drawer-open span,
+	.drawer-open span:before,
+	.drawer-open span:after {
+	  content: '';
+	  display: block;
+	  height: 3px;
+	  width: 25px;
+	  border-radius: 3px;
+	  background: #333;
+	  transition: 0.5s;
+	  position: absolute;
+	}
+
+	/* 三本線のうち一番上の棒の位置調整 */
+	.drawer-open span:before {
+	  bottom: 8px;
+	}
+
+	/* 三本線のうち一番下の棒の位置調整 */
+	.drawer-open span:after {
+	  top: 8px;
+	}
+
+	/* アイコンがクリックされたら真ん中の線を透明にする */
+	#drawer-check:checked ~ .drawer-open span {
+	  background: rgba(255, 255, 255, 0);
+	}
+
+	/* アイコンがクリックされたらアイコンが×印になように上下の線を回転 */
+	#drawer-check:checked ~ .drawer-open span::before {
+	  bottom: 0;
+	  transform: rotate(45deg);
+	}
+
+	#drawer-check:checked ~ .drawer-open span::after {
+	  top: 0;
+	  transform: rotate(-45deg);
+	}
+	  
+	/* メニューのデザイン*/
+	.drawer-content {
+	  width: 100%;
+	  height: 100%;
+	  position: fixed;
+	  top: 0;
+	  left: 100%;/* メニューを画面の外に飛ばす */
+	  z-index: 99;
+	  background: #fff;
+	  transition: .5s;
+	}
+
+	/* アイコンがクリックされたらメニューを表示 */
+	#drawer-check:checked ~ .drawer-content {
+	  left: 0;/* メニューを画面に入れる */
+	}
+
+}
+
