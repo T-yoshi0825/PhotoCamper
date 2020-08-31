@@ -1,14 +1,60 @@
-<div class="row">
-    <h2 class="midashi">登録詳細</h2>
-    	<div class="image">
-            <%= attachment_image_tag(@user,:profile_image, :fill, 100, 100, class:"image-circle", fallback: "no_image.jpg") %>
-    	</div>
-        <br>
-        <div class="acount_name">
-        	<%= @user.name %>
+<div class="container">
+    <div class="row">
+        <div class="admin-user-profile">
+
+            <div class="text-center">
+                <h2 class="user-show-title">登録内容</h2>
+            </div>
+
+            <table  class="table table-hover table-inverse">
+                <thead>
+                    <tr>
+                        <th>会員ID</th>
+                        <th>氏名</th>
+                        <th>メールアドレス</th>
+                        <th>ステータス</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <div class="ID">
+
+                            <td><%= @user.id %></td>
+
+                            <td>
+                                <div class="image">
+                                    <%= attachment_image_tag(@user,:profile_image, size: "150x150", class: "img-circle", fallback: "no_image.jpg") %>
+                                </div>
+                            
+                                <div class="name">
+                                    <%= @user.name %>
+                                </div>
+                            </td>
+
+                        </div>
+
+                        <div class="email">
+                            <td><%= @user.email %></td>
+                        </div>
+
+                        <div class="acount_status">
+                            <td>
+                                <% if @user.acount_status == true %>
+                                    <p class="true_txt">有効</p>
+                                    <% else %>
+                                    <p class="false_txt">退会済み</p>   
+                                <% end %>
+                            </td>
+                        </div>
+
+                        <td class="actions">
+                            <%= link_to "削除", admins_user_path(@user), method: :delete, class: "btn btn-danger" %>
+                        </td>
+
+                    </tr>
+                </tbody>
+            </table>
         </div>
-        <br>
-        <div class="email">
-        	<%= @user.email %>
-        </div>
+    </div>
 </div>

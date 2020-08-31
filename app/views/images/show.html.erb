@@ -1,109 +1,185 @@
-<div class="row">
+<div class="show container">
+    <div class="show1 row">
+        <h1 class="show-title">投稿詳細</h1>
+        <div class="col-sm-7">
 
-	<%= render 'layouts/sidebar', categories: Category.all%>
-    
-    <div class="col-sm-9">
-    	<div class="text-center">
-    		<div class="post-image">
-        		<%= attachment_image_tag @image, :image, size: "800x500", format: 'jpeg', class: "img-thumbnail" %>
+    		<div class="post-image1">
+        		<%= attachment_image_tag @image, :image, size: "550x450", format: 'jpeg', class: "show-image" %>
             </div>
-            <div class="caption-text">
-            	<%= @image.caption %>
+
+            <div class="show-profile-cont">
+                <div class="fct-contents">       
+                    <ul>
+                        <li class="fct-cont">
+                            <% if @image.favorited_by?(current_user) %>
+                                <%= link_to image_favorites_path(@image), method: :delete do %>
+                                <i class="fa fa-heart" aria-hidden = "true" style = "color: red;" >
+                                    <%= @image.favorites.count %>
+                                </i>
+                                <% end %>                                     
+                            <% else %>
+                                <%= link_to image_favorites_path(@image), method: :post do %>
+                                <i class="fa fa-heart-o" aria-hedden = "true" >
+                                    <%= @image.favorites.count %>
+                                </i>
+                                <% end %>
+                            <% end %>
+                        
+                                <i class="fa fa-comment-alt" aria-hedden = "true">
+                                    <%= @image.comments.count %>
+                                </i>  
+
+                                <i class="fa fa-eye" aria-hedden = "true">
+                                    <%= @image.impressions.count %>
+                                </i>
+
+                        </li>
+                    </ul>
+
+                    <div class="acount">
+                        <table>
+                            <tr>
+                                <th class="acount-profile">
+                                    <td><%= attachment_image_tag(@image.user, :profile_image, size: "80x80", class: "img-circle", fallback: "no_image.jpg") %></td>
+                                </th>
+                            
+                                <th class="acount-name">
+                                    <td><%= @image.user.name %></td>
+                                </th>
+                            </tr>
+                        </table>
+                    </div>
+
+                </div>
             </div>
-            <div class="favorite">
-                <% if @image.favorited_by?(current_user) %>
-                    <li>
-                        <%= link_to image_favorite_path(@image), method: :delete do %>
-                            <i class="fa fa-heart" aria-hidden = "true" style = "color: red;" ></i>
-                            <%= @image.favorites.count %>
-                        <% end %>
-                    </li>
-                <% else %>
-                    <li>
-                        <%= link_to image_favorites_path(@image), method: :post do %>
-                            <li class="fa fa-heart-o" aria-hedden = "true" ></li>
-                            <%= @image.favorites.count %>
-                        <% end %>
-                    </li>
-                <% end %>
-            </div>
-            <div id= 'map'></div>
-            <script>
-                let map
-                    let geocoder
+        </div>
 
-                    function initMap(){
-                      // geocoderを初期化
-                      geocoder = new google.maps.Geocoder()
-                    　var test ={lat: <%= @image.latitude %>, lng: <%= @image.longitude %>};
-                      map = new google.maps.Map(document.getElementById('map'), {
-                      center: test,
-                      zoom: 8
-                      });
-                    }
+        <div class="col-sm-5">
 
-                    function codeAddress(){
-                      // 入力を取得
-                      let inputAddress = document.getElementById('address').value;
+            <h3 class="google-map">GoogleMap</h3>
 
-                      // geocodingしたあとmapを移動
-                      geocoder.geocode( { 'address': inputAddress}, function(results, status) {
-                        if (status == 'OK') {
-                    　　　　　　　　　　　　// map.setCenterで地図が移動
-                          map.setCenter(results[0].geometry.location);
+                <div id= 'map'></div>
+                <script>
+                    let map
+                        let geocoder
 
-                    　　　　　　　　　　　　// google.maps.MarkerでGoogleMap上の指定位置にマーカが立つ
-                          var marker = new google.maps.Marker({
-                                map: map,
-                                position: results[0].geometry.location
+                        function initMap(){
+                          // geocoderを初期化
+                          geocoder = new google.maps.Geocoder()
+                        　var test ={lat: <%= @image.latitude %>, lng: <%= @image.longitude %>};
+                          map = new google.maps.Map(document.getElementById('map'), {
+                          center: test,
+                          zoom: 8
+                          });
+
+                        var marker = new google.maps.Marker({
+                                position: test,
+                                map: map
                             });
-
-                        } else {
-                          alert('Geocode was not successful for the following reason: ' + status);
                         }
-                      });
-                    }
-            </script>
-            <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBITQ4XcXfyuSbyCPHweISwuVjnFLCIV4Y&callback=initMap" async defer></script>
-            <br>
-            <%= @image.address %>
-            <br>
-            <div class="edit">
-            	<%= link_to "投稿を編集する", edit_image_path(@image) %>
-            </div>
-            <div class="destroy">
-                <%= link_to "投稿を削除する", image_path(@image), method: :delete %>
+                </script>
+
+                <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBITQ4XcXfyuSbyCPHweISwuVjnFLCIV4Y&callback=initMap" async defer></script>
+
+                <table class="table table_noborder">
+
+                    <tr>
+                        <th>キャンプ場名</th>
+                            <td class="map-address">
+                                <%= @image.address %>
+                            </td>
+                    </tr>
+
+                    <tr>
+                        <th>タイトル</th>
+                            <td class="title">
+                                <%= @image.title %>
+                            </td>
+                    </tr>
+
+                    <tr>
+                        <th>投稿説明</th>
+                            <td class="caption">
+                                <%= @image.caption %>
+                            </td>
+                    </tr>
+
+                </table>
+
+                <% if @image == current_user %>
+                    <div class="links">
+                    	<%= link_to "投稿を編集する", edit_image_path(@image), class: "btn btn-primary btn-block" %> 
+
+                        <%= link_to "投稿を削除する", image_path(@image), class: "btn btn-danger btn-block", method: :delete %>
+                    </div>
+                <% end %>
+
+        </div>
+    </div>
+
+    <div class="border-row">
+        <div class="col-lg">
+            <hr>
+        </div>
+    </div>
+
+    <div class="show2 row">
+        <div class="comment-contents">
+            <h2 class="comment-title">コメント欄</h2>
+            <div class="col-sm-7">
+
+                <div class="comment-index">
+                    <% @image.comments.each do |comment| %>
+
+                        <table class="comment-index table table-hover table-inverse">
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th>名前</th>
+                                        <th>コメント</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <%= attachment_image_tag comment.user, :profile_image,  size: "60x60", format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image.jpg" %>
+                                        </td>
+
+                                        <td><%= comment.user.name %></td>
+
+                                        <td><%= comment.comment %></td>
+
+                                        <td class="link">
+                                            <% if comment.user == current_user %>
+                                                <%= link_to "削除", image_comment_path(comment.image, comment), method: :delete, class: "btn btn-danger pull-right" %>
+                                            <% end %>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                        </table>
+                               
+                    <% end %>
+                </div>
+
             </div>
 
-            <br>
+            <div class="col-sm-5">
+                <div class="comment-form">
 
-            <% @image.comments.each do |comment| %>
-                <li class="comment">
-                    <div class="comment-boby bb">
-                        <div class="comment-avatar">
-                            <div class="avatar">
-                                <%= attachment_image_tag comment.user, :profile_image,  :fill, 100, 100, format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image.jpg" %>
+                    <%= render "layouts/errors", obj: @image %>
+
+                    <%= form_for [@image, @comment] do |f| %>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <%= f.text_area :comment, class: "btn btn-block" %>
                             </div>
                         </div>
-                        <div class="comment-text">
-                            <%= comment.comment %>
-                        </div>
-                        <% if comment.user == current_user %>
-                        <div>
-                            <%= link_to "削除する", image_comment_path(comment.image, comment), method: :delete, class: "btn btn-danger pull-right" %>
-                        </div>
-                        <% end %>
-                    </div>
-                </li>
-            <% end %>
-            <%= form_for [@image, @comment] do |f| %>
-                <div class="row">
-                    <div class="col-sm-12">
-                        <%= f.text_area :comment, class: "btn-block" %>
-                    </div>
-                </div>
-                <%= f.submit "送信する", class: "btn btn-lg btn-base-1 mt-20 pull-right" %>
-            <% end %>
-    	</div>
+                        <%= f.submit "コメントする", class: "btn btn-primary pull-right" %>
+                    <% end %>
+                </div>               
+            </div>
+
+        </div>
     </div>
 </div>

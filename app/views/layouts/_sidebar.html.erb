@@ -1,19 +1,9 @@
-<div class="col-sm-3">
-    <div class="sidebar">
-        <%= link_to new_image_path do %>
-          <h2 class="new_post">新規投稿</h2>
-        <% end %>
-        <h2 class="category_seach">ジャンル検索</h2>
-            <ul class="center">
-　　　　　　　　　　<% categories.each do |category| %>
-                    <% if category.active_status == true %>
-                        <li>
-                            <%= link_to admins_category_path(category) do %>
-                             <%= category.name %>
-                            <% end %>
-                        </li>
-                    <% end %>
+<h3 class="category-title">カテゴリー</h3>
+    <% categories.each do |category| %>
+        <% if category.active_status == true %>
+            <li><%=link_to admins_category_path(category),class: "white_txt" do %>
+                <%= category.name %>
                 <% end %>
-            </ul>
-    </div>
-</div>
+            </li>
+        <% end %>
+    <% end %>

@@ -1,4 +1,5 @@
 class FavoritesController < ApplicationController
+	before_action :authenticate_user!, only: [:create, :destroy]
 
 	def create
 		image = Image.find(params[:image_id])

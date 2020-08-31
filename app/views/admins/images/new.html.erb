@@ -1,26 +1,49 @@
-<div class="row">
-  <div class="text-center">
-      <h2 class="new_post"> 新規投稿</h2>
-      <%= form_for(@image) do |f| %>
-        <div class="post-image"> 
-           <%= attachment_image_tag @image, :image, :fill, 100, 100, class: "image-thumbnail", fallback: "noimage.png" %>
-          </div>
-          <div class="image_field">
-            <%= f.attachment_field :image, placeholder: "投稿画像", class: "edit_form" %>
-          </div>
-          <div class="caption-field">
-            <div class="text-left">
-              <h3>投稿説明</h3>
-              <%= f.text_field :caption, autofocus: true, class: "form-control" %>
+<div class="container">
+    <div class="row">
+        <div class="new-post-content">
+
+            <%= render "layouts/errors", obj: @image %>
+
+            <div class="text-center">
+              <h2 class="new_post"> 新規投稿</h2>
             </div>
-          </div>
-          <br>
-          <div class=“category_field”>
-        <%= f.label :category_id, "ジャンル" %>
-        <%= f.collection_select :category_id, @categories, :id, :name, include_blank: "選択してください", class: "form_input" %>
-            </div>
-            <br>
-          <%= f.submit "投稿する", class: "btn btn-success btn-block" %>
-        <% end %>
-  </div>
+
+            <%= form_for(@image) do |f| %>
+
+                <div class="select-image">
+                  <h3>投稿写真選択</h3>
+                </div>
+
+                <div class="image_field">
+                    <%= f.attachment_field :image, placeholder: "投稿画像", class: "edit_form" %>
+                  </div>
+
+                <div class="post-map-address">
+                  <h3>キャンプ場名</h3>
+                  <%=f.text_field :address, placeholder: "キャンプ場名" %>
+                </div>
+
+                <div class="new-post-image-title">
+                  <h3>タイトル</h3>
+                  <%=f.text_field :title, placeholder: "タイトル" %>
+                </div>
+
+                  <div class="caption">
+                    <h3 class="caption-title">投稿説明</h3>
+                    <%= f.text_area :caption, autofocus: true, class: "form-control" %>
+                  </div><br>
+                 
+                  <div class=“category”>
+                  <%= f.label :category_id, "カテゴリー" %>
+                  <%= f.collection_select :category_id, @categories, :id, :name, include_blank: "選択してください", class: "form_input" %>
+                    </div><br>
+                    
+                    <div class="actions">
+                    <%= f.submit "投稿する", class: "btn btn-primary btn-block" %>
+                </div>
+
+            <% end %>
+        </div>
+    </div>          
 </div>
+        

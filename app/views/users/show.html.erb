@@ -1,41 +1,115 @@
 <div class="container">
     <div class="row">
         <div class="user-content">
+
             <div class="text-center">
-                <h2 class="user-show-title">登録詳細</h2>
+                <h2 class="user-show-title">マイページ</h2>
             </div>
 
-                <table>
+            <div class="col-sm-4">
+                <div class="profile-image">
+                    <%= attachment_image_tag(current_user,:profile_image, size: "150x150", class: "user-image img-circle", fallback: "no_image.jpg") %>
+                </div>
+            </div>
 
-                    <tr>
-                        <th>プロフィール画像</th>
-                        <td class="acount-image">
-                        <%= attachment_image_tag(@user,:profile_image, :fill, 200, 200, class: "image-circle", fallback: "no_image.jpg") %>
-                        </td>
-                    </tr>
+            <div class="col-sm-8">
+                <table class="table table_noborder">
 
                     <tr>
                         <th>名前</th>
-                        <td class="acount-name">
-                        <%= @user.name %>
+                        <td class="acount-cont">
+                        <%= current_user.name %>
                         </td>
                     </tr>
 
                     <tr>
                         <th>メールアドレス</th>
-                        <td class="acount-email">
-                        <%= @user.email %>
+                        <td class="acount-cont">
+                        <%= current_user.email %>
                         </td>
                     </tr>
 
                 </table>
-
-            <br>
-
-            <div class="actions">
-                <%= link_to "登録内容編集", edit_user_path(@user), class: "btn btn-success btn-block" %>
             </div>
 
         </div>
+
+        <div class="user-actions">
+            <%= link_to "登録内容編集", edit_user_path(@user), class: "btn btn-primary btn-block" %>
+
+            <%= link_to "退会する", withdrawl_user_path(@user.id), class: "btn btn-danger btn-block", method: :patch, data: {confirm: "本当に退会しますか？"} %>
+        </div>
+
     </div>
 </div>
+
+    <div class="border-row">
+        <hr>
+    </div>
+
+    <div class="row">
+        <div class="user-index">
+            <main class="clearfix">
+
+                <% @images.each do |image| %>
+
+                    <div class="float-content">
+                        <div class="post-image">
+                                <%= link_to image_path(image) do %>
+                                <%= attachment_image_tag image, :image, size: "300x300", format: 'jpeg', class: "post-image" %>
+                                <% end %>
+                        </div>
+
+                        <div class="fct-profile-cont">
+                            <div class="fct-contents">       
+                                <ul>
+                                    <li class="fct-cont">
+                                        <% if image.favorited_by?(current_user) %>
+                                            <%= link_to image_favorites_path(image), method: :delete do %>
+                                            <i class="fa fa-heart" aria-hidden = "true" style = "color: red;" >
+                                                <%= image.favorites.count %>
+                                            </i>
+                                            <% end %>                                     
+                                        <% else %>
+                                            <%= link_to image_favorites_path(image), method: :post do %>
+                                            <i class="fa fa-heart-o" aria-hedden = "true" >
+                                                <%= image.favorites.count %>
+                                            </i>
+                                            <% end %>
+                                        <% end %>
+                                    
+                                            <i class="fa fa-comment-alt" aria-hedden = "true">
+                                                <%= image.comments.count %>
+                                            </i>  
+
+                                            <i class="fa fa-eye" aria-hedden = "true">
+                                                <%= image.impressions.count %>
+                                            </i>
+
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="post-image-title">
+                                <%= image.title %>
+                            </div>
+
+                            <div class="acount text-left">
+                                <table>
+                                    <tr>
+                                        <th class="acount-profile">
+                                            <td><%= attachment_image_tag(image.user, :profile_image, size: "80x80", class: "img-circle", fallback: "no_image.jpg") %></td>
+                                        </th>
+                                    
+                                        <th class="acount-name">
+                                            <td><%= image.user.name %></td>
+                                        </th>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                <% end %>
+            </main>
+        </div>
+    </div>

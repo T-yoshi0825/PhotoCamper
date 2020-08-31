@@ -1,4 +1,5 @@
 class Admins::CategoriesController < ApplicationController
+	before_action :authenticate_admin!, only: [:index, :create, :edit, :update]
 
 	def index
 		@category = Category.new
@@ -7,22 +8,27 @@ class Admins::CategoriesController < ApplicationController
 
 	def create
         @category = Category.new(category_params)
-        @category.save
-        redirect_to admins_categories_path
-	end
-
-	def show
-		@category = Category.find(params[:id])
+        if  @category.save
+        	redirect_to admins_categories_path
+        else
+        	@categories = Category.all
+        	render :index
+        end
 	end
 
 	def edit
 		@category = Category.find(params[:id])
+		@categories = Category.where(active_status: :true)
 	end
 
 	def update
 		@category = Category.find(params[:id])
-		@category.update(category_params)
-		redirect_to admins_categories_path
+		if  @category.update(category_params)
+		    redirect_to admins_categories_path
+		else
+			@categories = Category.where(active_status: :true)
+			render :edit
+		end
 	end
 
     private

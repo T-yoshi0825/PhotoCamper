@@ -1,48 +1,49 @@
 <div class="container">
     <div class="row">
-        <div class="text-center">
+        <div class="user-edit-content">
+
+            <%= render "layouts/errors", obj: @user %>
+
             <h2 class="edit-title">登録内容編集</h2>
+
+            <%= form_for(@user, url: user_path) do |f| %>
+
+                <table> 
+                    <tr class="edit-cont">
+                        <th class="post-image">
+                            <%= attachment_image_tag(@user,:profile_image, size: "100×100", class: "user-edit-image img-circle", fallback: "no_image.jpg") %>
+                        </th>
+                        <td class="image-field">
+                            <%= f.attachment_field :profile_image, placeholder: "プロフィール画像", class: " edit_form" %>
+                        </td>
+                    </tr>
+
+                    <tr class="edit-cont">
+                        <th class="field">
+                            <%= f.label :name, "名前", class: "form_label" %>
+                        </th>
+                        <td>
+                          <%= f.text_field :name, autofocus: true, autocomplete:"name", class: "user-edit-btn btn-block form_input" %>
+                        </td>
+                    </tr>
+
+                    <tr class="edit-cont">
+                        <th class="field">
+                            <%= f.label :email, "メールアドレス", class: "form_label" %>
+                        </th>
+                        <td>
+                          <%= f.text_field :email, autofocus: true, autocomplete:"email", class: "user-edit-btn btn-block form_input" %>
+                        </td>
+                    </tr>
+                </table>
+
+                <br>
+
+                <div class="actions">
+                  <%= f.submit "編集を保存する", class: "btn btn-success btn-lg" %>
+                </div>
+
+            <% end %>
         </div>
-            <div class="user-edit-content">
-
-              <%= form_for(@user) do |f| %>
-
-                  <table> 
-                      <tr>
-                          <th class="post-image">
-                              <%= attachment_image_tag(@user,:profile_image, :fill, 200, 200, class: "image-circle", fallback: "no_image.jpg") %>
-                          </th>
-                          <td class="image-field">
-                              <%= f.attachment_field :profile_image, placeholder: "プロフィール画像", class: " edit_form" %>
-                          </td>
-                      </tr>
-
-                      <tr>
-                          <th class="field">
-                              <%= f.label :name, "名前", class: "form_label" %>
-                          </th>
-                          <td>
-                            <%= f.text_field :name, autofocus: true, autocomplete:"name", class: "btn-block form_input" %>
-                          </td>
-                      </tr>
-
-                      <tr>
-                          <th class="field">
-                              <%= f.label :email, "メールアドレス", class: "form_label" %>
-                          </th>
-                          <td>
-                            <%= f.text_field :email, autofocus: true, autocomplete:"email", class: "btn-block form_input" %>
-                          </td>
-                      </tr>
-                  </table>
-
-                  <br>
-
-                  <div class="actions">
-                    <%= f.submit "編集を保存する", class: "btn btn-success btn-block" %>
-                  </div>
-
-              <% end %>
-          </div>
     </div>
 </div>

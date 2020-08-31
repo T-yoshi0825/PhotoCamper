@@ -1,46 +1,71 @@
-<div class="container-fluid">
-    <div class="row">
+<main class="clearfix">
     
-        <div class="col-sm-9">
-            <main class="clearfix">
-                <% @images.each do |image| %>
-                <div class="float-content">
-                	<div class="post-image">
-                    		<%= link_to image_path(image) do %>
-                    		<%= attachment_image_tag image, :image, size: "300x400", format: 'jpeg', class: "img-thumbnail" %>
-                            <% end %>
-                    </div>
-
-                    <div class="caption">
-                    	<%= link_to image_path(image) do %>
-                    	<%= image.caption %>
-                    	<% end %>
-                    </div>
-
-            　　　　　<div class="favorite">
-                        <% if image.favorited_by?(current_user) %>
-                            <div>
-                                <%= link_to image_favorite_path(image), method: :delete do %>
-                                <p class="fa fa-heart" aria-hidden = "true" style = "color: red;" ></p>
-                                <%= image.favorites.count %>
-                                <% end %>
-                            </div>
-                        <% else %>
-                            <div>
-                                <%= link_to image_favorites_path(image), method: :post do %>
-                                <p class="fa fa-heart-o" aria-hedden = "true" ></p>
-                                <%= image.favorites.count %>
-                                <% end %>
-                            </div>
-                        <% end %>
-                    </div>
-
-                    <div class="comment-count">
-                        <h6><%= image.comments.count %>件コメント</h6>
-                    </div>
-                </div>
-                <% end %>  
-            </main>
+        <div class="navs">
+            <ul class="nav nav-pills nav-justified btn-lg">
+                <li role="presentation" class="active"><%= link_to "新着順", images_path %></li>
+                <li role="presentation" ><%= link_to "いいね順", favorite_images_path %></li>
+                <li role="presentation" ><%= link_to "アクセス数順", access_images_path %></li>
+            </ul>
         </div>
-    </div>
-</div>
+
+
+    <% @images.each do |image| %>
+
+        <div class="float-content">
+        	<div class="post-image">
+            		<%= link_to image_path(image) do %>
+            		<%= attachment_image_tag image, :image, size: "300x300", format: 'jpeg', class: "post-image" %>
+                    <% end %>
+            </div>
+
+            <div class="fct-profile-cont">
+                <div class="fct-contents">       
+                    <ul>
+                        <li class="fct-cont">
+                            <% if image.favorited_by?(current_user) %>
+                                <%= link_to image_favorites_path(image), method: :delete do %>
+                                <i class="fa fa-heart" aria-hidden = "true" style = "color: red;" >
+                                    <%= image.favorites.count %>
+                                </i>
+                                <% end %>                                     
+                            <% else %>
+                                <%= link_to image_favorites_path(image), method: :post do %>
+                                <i class="fa fa-heart-o" aria-hedden = "true" >
+                                    <%= image.favorites.count %>
+                                </i>
+                                <% end %>
+                            <% end %>
+                        
+                                <i class="fa fa-comment-alt" aria-hedden = "true">
+                                    <%= image.comments.count %>
+                                </i>  
+
+                                <i class="fa fa-eye" aria-hedden = "true">
+                                    <%= image.impressions.count %>
+                                </i>
+
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="post-image-title">
+                    <%= image.title %>
+                </div>
+
+                <div class="acount text-left">
+                    <table>
+                        <tr>
+                            <th class="acount-profile">
+                                <td><%= attachment_image_tag(image.user, :profile_image, size: "80x80", class: "img-circle", fallback: "no_image.jpg") %></td>
+                            </th>
+                        
+                            <th class="acount-name">
+                                <td><%= image.user.name %></td>
+                            </th>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    <% end %>
+</main>
