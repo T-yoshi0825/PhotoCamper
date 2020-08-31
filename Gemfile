@@ -42,6 +42,7 @@ group :development, :test do
 end
 
 group :development do
+  gem 'pry-rails'
   gem 'listen', require: false
   gem 'rubocop', require: false
   gem 'rubocop-performance', require: false
@@ -74,6 +75,9 @@ gem 'jquery-rails'
 gem 'byebug'
 
 gem 'dotenv-rails'
+group :production do
+  gem 'mysql2'
+end
 
 gem 'omniauth-facebook'
 
@@ -82,3 +86,5 @@ gem 'omniauth-twitter'
 gem 'omniauth-google-oauth2'
 
 gem 'geocoder'
+
+gem 'impressionist', '~>1.6.1'
