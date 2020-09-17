@@ -59,28 +59,40 @@
             <h3 class="google-map">GoogleMap</h3>
 
                 <div id= 'map'></div>
-                <script>
-                    let map
-                        let geocoder
+                <script type="text/javascript">
 
-                        function initMap(){
-                          // geocoderを初期化
-                          geocoder = new google.maps.Geocoder()
-                        　var test ={lat: <%= @image.latitude %>, lng: <%= @image.longitude %>};
-                          map = new google.maps.Map(document.getElementById('map'), {
-                          center: test,
-                          zoom: 8
-                          });
+                    function initMap() {
+                       
+                        var test = {lat: <%= @image.latitude %>, lng: <%= @image.longitude %>};
+                        var map = new google.maps.Map(document.getElementById('map'), {
+                                  zoom: 8, 
+                                  center: test
+                                  });
+                        var transitLayer = new google.maps.TransitLayer();
+                        transitLayer.setMap(map);
+
+                        var contentString = '住所：<%= @image.address %>';
+                        var infowindow = new google.maps.InfoWindow({
+                          content: contentString
+                        });
 
                         var marker = new google.maps.Marker({
-                                position: test,
-                                map: map
-                            });
-                        }
+                                      position:test,
+                                      map: map,
+                                      title: contentString
+                                     });
+
+                         marker.addListener('click', function() {
+                           infowindow.open(map, marker);
+                         });
+                    }
+
                 </script>
 
-                <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBITQ4XcXfyuSbyCPHweISwuVjnFLCIV4Y&callback=initMap" async defer></script>
-
+                <script async defer
+                    src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap">
+                </script>
+                
                 <table class="table table_noborder">
 
                     <tr>
@@ -106,7 +118,7 @@
 
                 </table>
 
-                <% if @image == current_user %>
+                <% if @image.user == current_user %>
                     <div class="links">
                     	<%= link_to "投稿を編集する", edit_image_path(@image), class: "btn btn-primary btn-block" %> 
 

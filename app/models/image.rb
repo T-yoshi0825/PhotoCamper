@@ -31,5 +31,5 @@ class Image < ApplicationRecord
 			Image.all
 		end
 	end
-	 
+	
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_28_142606) do
+ActiveRecord::Schema.define(version: 2020_09_13_074948) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -52,13 +52,13 @@ ActiveRecord::Schema.define(version: 2020_08_28_142606) do
     t.string "image_id"
     t.string "caption"
     t.integer "category_id"
-    t.text "address"
     t.float "latitude"
     t.float "longitude"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "title"
     t.integer "impressions_count", default: 0
+    t.string "address"
   end
 
   create_table "impressions", force: :cascade do |t|
@@ -114,7 +114,6 @@ ActiveRecord::Schema.define(version: 2020_08_28_142606) do
     t.string "provider"
     t.string "uid"
     t.string "name"
-    t.text "address"
     t.string "profile_image_id"
     t.boolean "is_active", default: true
     t.boolean "acount_status", default: true
