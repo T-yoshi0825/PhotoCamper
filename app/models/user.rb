@@ -4,8 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
          :omniauthable, omniauth_providers: %i[facebook twitter google_oauth2]
-        # omniauthのコールバック時に呼ばれるメソッド
-  def self.from_omniauth(auth)
+         
+   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.email = auth.info.email
       user.password = Devise.friendly_token[0,20]
@@ -20,7 +20,6 @@ class User < ApplicationRecord
   end
   #is_activeが有効の場合は有効会員(ログイン可能)
 
-  has_many :sns_credential, dependent: :destroy
   has_many :images, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
