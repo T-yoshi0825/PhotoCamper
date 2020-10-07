@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  get 'search/search'
   devise_for :admins, controllers: {
     sessions: 'admins/sessions'
   }
@@ -13,6 +14,7 @@ Rails.application.routes.draw do
 	root "home#top"
 	get "home/about" => "home/about"
   get '/map_request', to: 'images#map', as: 'map/request'
+  get "search" => "users#search"
   resources :users do
     member do
       get "check"

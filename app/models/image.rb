@@ -26,7 +26,7 @@ class Image < ApplicationRecord
 
 	def self.search(search)
 		if search
-			Image.where(['content LIKE ?', "%#{search}%"])
+			@images = Image.where("address LIKE ?", "%#{search}%")
 		else
 			Image.all
 		end

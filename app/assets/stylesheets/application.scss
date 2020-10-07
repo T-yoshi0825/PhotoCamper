@@ -69,9 +69,31 @@ header {
 	margin-right: 30px;
 }
 
+.search-content {
+    margin-top: 150px;
+    margin-left: 1000px;
+}
+
 a {
 	color: #000;
 	font-size: 15px;
+}
+
+h2 {
+	margin-top: 180px;
+    text-align: center;
+    font-size: 35px;
+}
+
+h3, .h3 {
+    font-size: 30px;
+    margin-top: 5px;
+    margin-right: 60px;
+}
+
+.category-navs {
+	margin-top: 100px;
+	margin-bottom: 80px;
 }
 
 /*-----signup/login-----*/
@@ -288,7 +310,7 @@ hr {
 /*-----image-----*/
 
 .navs {
-	margin-top: 140px;
+	margin-top: 110px;
 	margin-bottom: 80px;
 }
 

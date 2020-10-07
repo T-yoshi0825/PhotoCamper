@@ -1,6 +1,7 @@
 class ImagesController < ApplicationController
 	before_action :authenticate_user!
 	before_action :authenticate_user!, only: [:create, :edit, :update, :destroy]
+	before_action :get_user_and_category, only: [:index, :favorite, :access]
 	
 	def new
         @image = Image.new
@@ -19,22 +20,16 @@ class ImagesController < ApplicationController
 	end
 
 	def index
-		@user = current_user
-		@images = Image.all
-		@categories = Category.where(active_status: :true)
+		@images = Image.search(params[:search])
 		@images = Image.order(impressions_count: 'DESC').order(created_at: :desc)
 		#order(created_at: :desc)=最新投稿順
 	end
 
 	def favorite
-		@user = current_user
-		@categories = Category.where(active_status: :true)
 		@images = Image.all.sort {|a,b| b.favorited_users.count <=> a.favorited_users.count}
 	end
 
 	def access
-		@user = current_user
-		@categories = Category.where(active_status: :true)
 		@images = Image.order(impressions_count: 'DESC')
 	end
 
@@ -72,5 +67,10 @@ class ImagesController < ApplicationController
 	private
 	def image_params
 		params.require(:image).permit(:image, :address, :title, :latitude, :longitude, :caption, :comment, :category_id)
+	end
+
+	def get_user_and_category
+		@user = current_user
+		@categories = Category.where(active_status: :true)
 	end
 end
