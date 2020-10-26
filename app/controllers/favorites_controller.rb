@@ -1,18 +1,17 @@
 class FavoritesController < ApplicationController
-	before_action :authenticate_user!, only: [:create, :destroy]
+  before_action :authenticate_user!, only: %i[create destroy]
 
-	def create
-		image = Image.find(params[:image_id])
-		favorite = image.user.favorites.new(image_id: image.id)
-		favorite.save
-		redirect_to request.referer
-	end
+  def create
+    image = Image.find(params[:image_id])
+    favorite = image.user.favorites.new(image_id: image.id)
+    favorite.save
+    redirect_to request.referer
+  end
 
-	def destroy
-		image = Image.find(params[:image_id])
-		favorite = image.user.favorites.find_by(image_id: image.id)
-		favorite.destroy
-		redirect_to request.referer
-	end
-    
+  def destroy
+    image = Image.find(params[:image_id])
+    favorite = image.user.favorites.find_by(image_id: image.id)
+    favorite.destroy
+    redirect_to request.referer
+  end
 end

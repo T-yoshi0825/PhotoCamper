@@ -3,11 +3,11 @@
 class Users::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
 
-  #GET /resource/sign_in
-   def new
-    @categories = Category.where(active_status: :true)
+  # GET /resource/sign_in
+  def new
+    @categories = Category.where(active_status: true)
     super
-   end
+  end
 
   # POST /resource/sign_in
   # def create

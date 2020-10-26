@@ -1,20 +1,8 @@
 <main class="clearfix">
 
-    <div class="search-content">
-        <%= form_tag(images_path, :method => 'get') do %>
-            <%= text_field_tag :search %>
-            <%= submit_tag '検索', class: "btn btn-primary" %>
-        <% end %>
-    </div>
-        
-    <div class="navs">
-        <ul class="nav nav-pills nav-justified btn-lg">
-            <li role="presentation" class="active"><%= link_to "新着順", images_path %></li>
-            <li role="presentation" ><%= link_to "いいね順", favorite_images_path %></li>
-            <li role="presentation" ><%= link_to "アクセス数順", access_images_path %></li>
-        </ul>
-    </div>
+    <%= render 'layouts/search' %>
 
+    <%= render 'layouts/navbar' %>
 
     <% @images.each do |image| %>
 

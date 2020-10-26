@@ -26,8 +26,7 @@ class Admins::SessionsController < Devise::SessionsController
   # end
 
   def new
-    @categories = Category.where(active_status: :true)
+    @categories = Category.where(active_status: true)
     super
-   end
-   
+  end
 end

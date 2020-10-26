@@ -70,13 +70,17 @@ header {
 }
 
 .search-content {
-    margin-top: 150px;
+    margin-top: 100px;
     margin-left: 1000px;
 }
 
 a {
 	color: #000;
 	font-size: 15px;
+}
+
+p {
+	font-size: 25px;
 }
 
 h2 {
@@ -309,15 +313,54 @@ hr {
 
 /*-----image-----*/
 
-.navs {
-	margin-top: 110px;
-	margin-bottom: 80px;
+.bar {
+	background-color: #D9E5FF;
+	width: 33%;
+	height: 70px;
+	float: left;
+	text-align: center;
+	border: 1px solid black;
+	margin-top: 50px;
+    margin-bottom: 70px;
+    padding-top: 15px;
 }
 
-.nav-pills {
-	padding: 0;
-	color: #FFF;
-	background-color: #FFF;
+.bar1 {
+	background-color: #D9E5FF;
+	width: 33%;
+	float: left;
+	text-align: center;
+	border: 1px solid black;
+	border-right: none;
+    border-left: none;
+    height: 70px;
+    margin-top: 50px;
+    margin-bottom: 70px;
+    padding-top: 15px;
+}
+
+.bar2 {
+	background-color: #D9E5FF;
+	width: 33%;
+	float: left;
+	text-align: center;
+	border: 1px solid black;
+	height: 70px;
+	margin-top: 50px;
+    margin-bottom: 70px;
+    padding-top: 15px;
+}
+
+.bar.bar-ext {
+	background-color: #75A9FF;
+}
+
+.bar1.bar-ext {
+	background-color: #75A9FF;
+}
+
+.bar2.bar-ext {
+	background-color: #75A9FF;
 }
 
 main {
@@ -647,6 +690,19 @@ footer {
 /* スマートフォンサイズ（425px）以下の際に適用される設定 */
 @media screen and (max-width:425px) {
 
+	header {
+		width: auto;
+	}
+
+	.header-content {
+    	margin-right: 60px;
+	}
+
+	p {
+	    font-size: 15px;
+	    padding-top: 10px;
+	}
+
 	.main-visual {
 		background-image: image-url("ahmed-zayan-6h0xlEZoYZY-unsplash.jpg");
 	}
@@ -663,9 +719,19 @@ footer {
 		width: 150px;
 	}
 
+	.search-content {
+		margin-left: 80px;
+	}
+
+	.navigation_bar {
+		height: 200px;
+		margin-left: 15px;
+	}
+
 	.float-content {
 		height: 550px;
 		float: none;
+		margin-left: 0;
 	}
 
 	.fct-profile-cont {
@@ -764,8 +830,8 @@ footer {
 	.drawer-open {
 	  height: 44px;
 	  width: 100%;
-	  padding-top: 32px;
-      margin-left: 370px;
+	  padding-top: 34px;
+      margin-left: 320px;
 	  justify-content: center;
 	  align-items: center;
 	  position: relative;
