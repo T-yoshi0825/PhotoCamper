@@ -30,7 +30,7 @@ body {
 }
 
 .row {
-	margin-top: 80px;
+	margin-top: 40px;
 }
 
 .field {
@@ -71,7 +71,6 @@ header {
 
 .search-content {
     margin-top: 100px;
-    margin-left: 1000px;
 }
 
 a {
@@ -98,6 +97,12 @@ h3, .h3 {
 .category-navs {
 	margin-top: 100px;
 	margin-bottom: 80px;
+}
+
+.category_title {
+	text-align: center;
+    font-size: 40px;
+    margin-top: 30px;
 }
 
 /*-----signup/login-----*/

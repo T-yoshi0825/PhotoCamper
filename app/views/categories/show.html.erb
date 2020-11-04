@@ -1,14 +1,12 @@
 <main class="clearfix">
 
-    <h2><%= @category.name %></h2>
-    
-    <div class="category-navs">
-        <ul class="nav nav-pills nav-justified btn-lg">
-            <li role="presentation" class="active"><%= link_to "新着順", images_path %></li>
-            <li role="presentation" ><%= link_to "いいね順", favorite_images_path %></li>
-            <li role="presentation" ><%= link_to "アクセス数順", access_images_path %></li>
-        </ul>
+    <%= render 'layouts/search' %>
+
+    <div class="category_title">
+        <%= @category.name %>
     </div>
+    
+    <%= render 'layouts/navbar' %>
 
     <% @images.each do |image| %>
 
@@ -45,25 +43,26 @@
                                     <%= image.impressions.count %>
                                 </i>
 
-                                <i class="fa fa-tags" aria-hidden = "true"></i>
                         </li>
                     </ul>
                 </div>
 
-                <div class="post-image-title text-left">
+                <div class="post-image-title">
                     <%= image.title %>
                 </div>
 
                 <div class="acount text-left">
-                    <ul>
-                        <li class="acount-profile">
-                            <i><%= attachment_image_tag(image.user,:profile_image, size: "100x100", class: "img-circle", fallback: "no_image.jpg") %></i>
-                        </li>
+                    <table>
+                        <tr>
+                            <th class="acount-profile">
+                                <td><%= attachment_image_tag(image.user, :profile_image, size: "80x80", class: "img-circle", fallback: "no_image.jpg") %></td>
+                            </th>
                         
-                        <li class="acount-name">
-                            <i><%= image.user.name %></i>
-                        </li>
-                    </ul>
+                            <th class="acount-name">
+                                <td><%= image.user.name %></td>
+                            </th>
+                        </tr>
+                    </table>
                 </div>
             </div>
         </div>
