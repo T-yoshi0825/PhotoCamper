@@ -249,7 +249,8 @@ hr {
 	margin-top: 30px;
 	margin-bottom: 30px;
 	background-image: image-url("home.jpg");
-	background-size: contain;
+	background-size: cover;
+	background-position: bottom;
 }
 
 .main-visual-content {
